@@ -2,6 +2,7 @@
 using Uzum.Aplication.Abstractions;
 using Uzum.Infrastructure.Abstractions;
 using Uzum.Infrastructure.Persistence;
+using Uzum.Infrastructure.Providers;
 
 namespace Uzum.Infrastructure.Services
 {
@@ -17,7 +18,6 @@ namespace Uzum.Infrastructure.Services
             _tokenService = tokenService;
             _hashProvider = hashProvider;
         }
-
 
         public async Task<string> LoginAsync(string username, string password)
         {
