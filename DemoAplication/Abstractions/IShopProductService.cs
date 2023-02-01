@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uzum.Aplication.Abstractions
 {
-    internal interface IBrandService
+    internal interface IShopProductService
     {
     }
 }

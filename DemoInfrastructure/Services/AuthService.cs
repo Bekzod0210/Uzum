@@ -25,12 +25,12 @@ namespace Uzum.Infrastructure.Services
 
             if (user == null)
             {
-                throw new Exception("User not found");
+                throw new Exception("user not found");
             }
 
             if (user.PasswordHash != _hashProvider.GetHash(password))
             {
-                throw new Exception("Password is wrong");
+                throw new Exception("password is wrong");
             }
 
             return _tokenService.GenerateAccessToken(user);
