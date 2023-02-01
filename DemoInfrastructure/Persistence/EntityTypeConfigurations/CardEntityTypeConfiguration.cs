@@ -12,6 +12,13 @@ namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
             builder.Property(p => p.CardNumber)
                 .HasMaxLength(50)
                 .IsRequired();
+
+            builder.HasData(new Card()
+            {
+                Id = 1,
+                CardNumber = "8600 0000 0000",
+                TotalSum = 0,
+            });
         }
     }
 }

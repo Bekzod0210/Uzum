@@ -21,7 +21,7 @@ namespace Uzum.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped</*IApplicationDbContext, */ ApplicationDbContext>();
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             //services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<ITokenService, JWTService>();
             services.AddScoped<IAuthService, AuthService>();

@@ -77,7 +77,7 @@ namespace Uzum.Infrastructure.Migrations
                     UserName = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: false),
-                    CardId = table.Column<int>(type: "integer", nullable: false),
+                    CardId = table.Column<int>(type: "integer", nullable: true),
                     Balance = table.Column<decimal>(type: "numeric", nullable: false),
                     Role = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -88,8 +88,7 @@ namespace Uzum.Infrastructure.Migrations
                         name: "FK_Users_Cards_CardId",
                         column: x => x.CardId,
                         principalTable: "Cards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
