@@ -23,7 +23,7 @@ namespace Uzum.Infrastructure.Services
             {
                 new Claim(JwtRegisteredClaimNames.Name, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("Role", user.Role.ToString()),
+                new Claim("Role", user.Role.ToString()!),
             };
 
             var credentials = new SigningCredentials(

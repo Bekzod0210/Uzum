@@ -10,4 +10,14 @@
     <ProjectReference Include="..\DemoDomain\Uzum.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MappingProfiles\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+  </ItemGroup>
+
 </Project>
