@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Uzum.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using Uzum.Infrastructure.Persistence;
 namespace Uzum.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230201082325_f2")]
+    partial class f2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -312,19 +315,6 @@ namespace Uzum.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Balance = 10000000m,
-                            CardId = 1,
-                            FullName = "Adminbek Adminov",
-                            PasswordHash = "CA5B9811BE39C13BA3F8265C006761214B85F36FFE177C482AA548A30FC2C8994F5AE33790A4AE6A302B65A05A906AAED4912F02C0E69FC6CE14A9C90AD998A0",
-                            PhoneNumber = "+998991234567",
-                            Role = 1,
-                            UserName = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("Uzum.Domain.Entities.BoughtProduct", b =>

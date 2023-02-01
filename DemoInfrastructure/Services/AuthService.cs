@@ -1,6 +1,9 @@
-﻿using Uzum.Aplication.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using Uzum.Aplication.Abstractions;
 using Uzum.Infrastructure.Abstractions;
 using Uzum.Infrastructure.Persistence;
+using Uzum.Infrastructure.Providers;
 
 namespace Uzum.Infrastructure.Services
 {
@@ -17,26 +20,21 @@ namespace Uzum.Infrastructure.Services
             _hashProvider = hashProvider;
         }
 
-        public Task<string> LoginAsync(string username, string password)
+        public async Task<string> LoginAsync(string username, string password)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
+
+            if (user == null)
+            {
+                throw new Exception("user not found");
+            }
+
+            if (user.PasswordHash != _hashProvider.GetHash(password))
+            {
+                throw new Exception("password is wrong");
+            }
+
+            return _tokenService.GenerateAccessToken(user);
         }
-
-        //public async Task<string> LoginAsync(string username, string password)
-        //{
-        //    var user = await _dbContext.Users.FirstOrDefault(x => x.UserName == username);
-
-        //    if (user == null)
-        //    {
-        //        throw new Exception("User not found");
-        //    }
-
-        //    if (user.PasswordHash != _hashProvider.GetHash(password))
-        //    {
-        //        throw new Exception("Password is wrong");
-        //    }
-
-        //    return _tokenService.GenerateAccessToken(user);
-        //}
     }
 }

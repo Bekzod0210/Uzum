@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Uzum.Aplication.Abstractions;
 using Uzum.Domain.Entities;
 using Uzum.Infrastructure.Persistence.EntityTypeConfigurations;
 
 namespace Uzum.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : DbContext // IApplicationDbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
            : base(options)

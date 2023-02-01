@@ -12,8 +12,8 @@ using Uzum.Infrastructure.Persistence;
 namespace Uzum.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230201064155_f1")]
-    partial class f1
+    [Migration("20230201082347_f3")]
+    partial class f3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,11 +71,11 @@ namespace Uzum.Infrastructure.Migrations
 
             modelBuilder.Entity("Uzum.Domain.Entities.Card", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
@@ -88,6 +88,14 @@ namespace Uzum.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CardNumber = "8600 0000 0000",
+                            TotalSum = 0m
+                        });
                 });
 
             modelBuilder.Entity("Uzum.Domain.Entities.Category", b =>
@@ -276,7 +284,7 @@ namespace Uzum.Infrastructure.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("CardId")
+                    b.Property<int?>("CardId")
                         .HasColumnType("integer");
 
                     b.Property<string>("FullName")
@@ -307,6 +315,19 @@ namespace Uzum.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Balance = 10000000m,
+                            CardId = 1,
+                            FullName = "Adminbek Adminov",
+                            PasswordHash = "CA5B9811BE39C13BA3F8265C006761214B85F36FFE177C482AA548A30FC2C8994F5AE33790A4AE6A302B65A05A906AAED4912F02C0E69FC6CE14A9C90AD998A0",
+                            PhoneNumber = "+998991234567",
+                            Role = 1,
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Uzum.Domain.Entities.BoughtProduct", b =>
@@ -403,9 +424,7 @@ namespace Uzum.Infrastructure.Migrations
                 {
                     b.HasOne("Uzum.Domain.Entities.Card", "Card")
                         .WithMany("Users")
-                        .HasForeignKey("CardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CardId");
 
                     b.Navigation("Card");
                 });

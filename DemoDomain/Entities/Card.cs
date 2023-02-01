@@ -7,7 +7,7 @@
             Users = new List<User>();
         }
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public decimal TotalSum { get; set; }
 
