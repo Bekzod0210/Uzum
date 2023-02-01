@@ -18,8 +18,8 @@ namespace Uzum.Domain.Entities
 
         public decimal Balance { get; set; }
 
-        public UserRole Role { get; set; }
+        public UserRole? Role { get; set; }
 
-        public Card Card { get; set; }
+        public Card? Card { get; set; }
     }
 }
