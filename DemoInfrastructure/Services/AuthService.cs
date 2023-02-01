@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using Uzum.Aplication.Abstractions;
 using Uzum.Infrastructure.Abstractions;
 using Uzum.Infrastructure.Persistence;

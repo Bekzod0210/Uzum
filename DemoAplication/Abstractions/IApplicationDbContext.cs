@@ -20,4 +20,3 @@ namespace Uzum.Aplication.Abstractions
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
-}
