@@ -8,7 +8,7 @@ namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<ShopProduct> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(x => x.Id);
         }
     }
 }
