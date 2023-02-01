@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Uzum.Domain.Entities;
 
 namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
@@ -17,7 +12,7 @@ namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(50);
-            builder.Property(p=>p.AccountNumber)
+            builder.Property(p => p.AccountNumber)
                 .IsRequired();
         }
     }

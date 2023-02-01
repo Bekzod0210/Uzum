@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Uzum.Domain.Entities
+﻿namespace Uzum.Domain.Entities
 {
     public class Contract
     {
@@ -12,7 +6,7 @@ namespace Uzum.Domain.Entities
         {
             BoughtProducts = new List<BoughtProduct>();
             Payments = new List<Payment>();
-            
+
         }
 
         public int Id { get; set; }
