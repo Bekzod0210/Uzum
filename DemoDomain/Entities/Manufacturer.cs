@@ -1,14 +1,14 @@
 ﻿namespace Uzum.Domain.Entities
 {
-    public class Brand
+    public class Manufacturer
     {
-        public Brand()
+        public Manufacturer()
         {
-            Products = new List<Product>();
+            Products = new HashSet<Product>();
         }
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-
+        public string Country { get; set; } = string.Empty;
         public ICollection<Product> Products { get; set; }
 
     }

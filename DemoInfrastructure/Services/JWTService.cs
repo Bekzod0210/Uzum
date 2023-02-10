@@ -1,39 +1,39 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Uzum.Domain.Entities;
-using Uzum.Infrastructure.Abstractions;
+using Uzum.Aplication.Abstractions;
+using Uzum.Infrastructure.Configurations;
 
 namespace Uzum.Infrastructure.Services
 {
     public class JWTService : ITokenService
     {
-        private readonly IConfiguration _configuration;
-
-        public JWTService(IConfiguration configuration)
+        private readonly JWTConfiguration _jwtConfiguration;
+        public JWTService(IOptions<JWTConfiguration> jwtConfiguration)
         {
-            _configuration = configuration;
+            _jwtConfiguration = jwtConfiguration.Value;
         }
 
-        public string GenerateAccessToken(User user)
+        public string GetAccessToken(Claim[] userClaims)
         {
-            var claims = new Claim[]
+            var jwtClaims = new Claim[]
             {
-                new Claim(JwtRegisteredClaimNames.Name, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("Role", user.Role.ToString()!),
+                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
             };
 
+            var claims = userClaims.Concat(jwtClaims);
+
             var credentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]!)),
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfiguration.Secret)),
                 SecurityAlgorithms.HmacSha256
             );
 
             var token = new JwtSecurityToken(
-                _configuration["JWT:ValidIssuer"],
-                _configuration["JWT:ValidAudience"],
+                _jwtConfiguration.ValidIssuer,
+                _jwtConfiguration.ValidAudience,
                 claims,
                 expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: credentials);

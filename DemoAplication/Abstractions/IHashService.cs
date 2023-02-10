@@ -1,6 +1,6 @@
 ﻿namespace Uzum.Aplication.Abstractions
 {
-    public interface IHashProvider
+    public interface IHashService
     {
         string GetHash(string value);
     }

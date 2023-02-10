@@ -4,10 +4,12 @@ using Uzum.Domain.Entities;
 
 namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
 {
-    partial class CategoryEntityTypeConfiguration : IEntityTypeConfiguration<Category>
+    public class CustomerEntityTypeConfiguration : IEntityTypeConfiguration<Customer>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Customer> builder)
         {
+            builder.ToTable("Customer");
+            // builder.ToTable(nameof(Customer));
             builder.HasKey(c => c.Id);
         }
     }

@@ -4,9 +4,9 @@ using Uzum.Domain.Entities;
 
 namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
 {
-    public class ContractEntityTypeConfiguration : IEntityTypeConfiguration<Contract>
+    public class ManufacturerEntityTypeConfiguration : IEntityTypeConfiguration<Manufacturer>
     {
-        public void Configure(EntityTypeBuilder<Contract> builder)
+        public void Configure(EntityTypeBuilder<Manufacturer> builder)
         {
             builder.HasKey(x => x.Id);
         }

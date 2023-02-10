@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DemoAplication\Uzum.Aplication.csproj" />
     <ProjectReference Include="..\DemoInfrastructure\Uzum.Infrastructure.csproj" />
   </ItemGroup>
 

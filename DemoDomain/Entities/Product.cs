@@ -4,22 +4,17 @@
     {
         public Product()
         {
-            ShopProducts = new List<ShopProduct>();
+            MerchantProducts = new HashSet<MerchantProduct>();
         }
         public int Id { get; set; }
-
         public string Name { get; set; } = string.Empty;
-
-        public int Amount { get; set; }
+        public int ManufacturerId { get; set; }
         public int CategoryId { get; set; }
 
-        public int BrandId { get; set; }
+        public Manufacturer? Manufacturer { get; set; }
+        public Category? Category { get; set; }
+        public ICollection<MerchantProduct>? MerchantProducts { get; set; }
 
-        public Category Category { get; set; }
-
-        public Brand Brand { get; set; }
-
-        public ICollection<ShopProduct> ShopProducts { get; set; }
 
     }
 }

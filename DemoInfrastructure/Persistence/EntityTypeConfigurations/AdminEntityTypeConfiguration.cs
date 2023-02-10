@@ -4,10 +4,13 @@ using Uzum.Domain.Entities;
 
 namespace Uzum.Infrastructure.Persistence.EntityTypeConfigurations
 {
-    public class ShopProductEntityTypeConfiguration : IEntityTypeConfiguration<ShopProduct>
+    public class AdminEntityTypeConfiguration : IEntityTypeConfiguration<Admin>
     {
-        public void Configure(EntityTypeBuilder<ShopProduct> builder)
+        public void Configure(EntityTypeBuilder<Admin> builder)
         {
+            // 2 lasi ham bir hil
+            //builder.ToTable("Admin");
+            builder.ToTable(nameof(Admin));
             builder.HasKey(x => x.Id);
         }
     }

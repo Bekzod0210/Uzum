@@ -1,14 +1,15 @@
+using MediatR;
 using Microsoft.OpenApi.Models;
+using Uzum.Aplication;
 using Uzum.Infrastructure;
+using Uzum.Infrastructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -65,3 +66,46 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//public static IServiceCollection AddApplication(this IServiceCollection services)
+//{
+//    services.AddMediatR(typeof(DependencyInjection).Assembly);
+
+//    return services;
+//}
+
+
+
+
+//var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.AddInfrastructure(builder.Configuration);
+//builder.Services.AddApplication();
+
+//builder.Services.Configure<JWTConfiguration>(builder.Configuration.GetSection(nameof(JWTConfiguration)));
+
+//builder.Services.AddHttpContextAccessor();
+//builder.Services.AddControllers();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
+
+//var app = builder.Build();
+
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+//app.UseHttpsRedirection();
+
+//app.UseAuthorization();
+
+//app.MapControllers();
+
+//app.Run();
+
+
+
+
+
