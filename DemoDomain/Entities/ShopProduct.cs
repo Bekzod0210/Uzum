@@ -1,16 +1,14 @@
-﻿using System.ComponentModel;
-
-namespace Uzum.Domain.Entities
+﻿namespace Uzum.Domain.Entities
 {
     public class ShopProduct
     {
         public ShopProduct()
         {
             BoughtProducts = new List<BoughtProduct>();
-            Transactions= new List<Transaction>();
+            Transactions = new List<Transaction>();
         }
         public int Id { get; set; }
-        
+
         public decimal Price { get; set; }
 
         public int Count { get; set; }
